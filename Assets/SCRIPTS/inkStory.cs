@@ -24,10 +24,6 @@ public class inkStory : MonoBehaviour
     public TextMeshProUGUI DialogueText;
     // choice button ui
     public Button button;
-   
-
-   
-    //int index = 0;
 
     public void Awake()
     {
@@ -115,6 +111,7 @@ public class inkStory : MonoBehaviour
 		// Make the button expand to fit the text
 		HorizontalLayoutGroup layoutGroup = choice.GetComponent<HorizontalLayoutGroup>();
 		layoutGroup.childForceExpandHeight = true;
+        layoutGroup.childScaleHeight = true;
 
 		return choice;
     }
