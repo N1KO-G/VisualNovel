@@ -1,10 +1,15 @@
 using System;
 using Ink.Runtime;
 using TMPro;
-using Unity.Multiplayer.Center.Common;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
+using Random = UnityEngine.Random;
+using UnityEditor.Overlays;
+
+
+
 
 
 public class inkStory : MonoBehaviour
@@ -14,16 +19,51 @@ public class inkStory : MonoBehaviour
     [SerializeField] private Canvas canvas = null;
     [SerializeField] private GameObject ButtonHolder;
     [SerializeField] private bool choicecheck;
+    [SerializeField] private bool hasSpeakerTag;
+    [SerializeField] private bool hasTextstyleTag;
+     [SerializeField] private bool hasEmotionTag;
+    [SerializeField] private bool isTyping = false;
 
     // this the JSON
     public TextAsset JSONAsset;
     //this the story itself
     Story testStory;
     
-    // dialogue text
+    //audio 
+    public AudioSource audioSource;
+    public AudioClip textSound;
+
+    //text
     public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI SpeakerText;
+    private string fullline;
     // choice button ui
     public Button button;
+
+    //animator/animation stuff
+    public Animator emotionanimator;
+    public Animator layoutanimator;
+    public CanvasGroup canvasGroup;
+    private string layout;
+
+  
+
+    //tags
+    private const string SPEAKER_TAG = "speaker";
+    private const string TEXTSTYLE_TAG = "textstyle";
+    private const string EMOTION_TAG = "emotion";
+    private const string LAYOUT_TAG = "layout";
+
+    //speaker holder
+    private string currentspeaker;
+
+    private string emotion;
+
+
+    //coroutine
+    private Coroutine typingcoroutine;
+
+
 
     public void Awake()
     {
@@ -34,27 +74,105 @@ public class inkStory : MonoBehaviour
 
      public void Update()
      {
-         if(Input.GetKeyDown(KeyCode.E) && choicecheck != true)
+         if(Input.GetKeyDown(KeyCode.E))
          {
-           ContinueStory();
+           if (isTyping)
+           {
+            SkipTyping();
+           }
+           else if(!choicecheck)
+           {
+             ContinueStory();
+           }
          }
      }
 
 
+
+
     public void ContinueStory()
     {
+    
           //running through a loop to check if the story can continue
         if (testStory.canContinue)
         {
-           DialogueText.text = testStory.Continue();
+           string line = testStory.Continue();
+           fullline = line;
            Debug.Log("Story is continuing");
-           choicecheck = false;
+
+           if(typingcoroutine != null)
+           {
+            StopCoroutine(typingcoroutine);
+           }
+           typingcoroutine = StartCoroutine(Typing(line));
+
+           Handletags(testStory.currentTags);
+
+           choicecheck = true;
         }
         else
         {
             Choices();
             Debug.Log("CHOICE IS HERE");
         }
+    }
+
+    private void Handletags(List<string> currentTags)
+    {
+         hasSpeakerTag = false;
+         hasTextstyleTag = false;
+         hasEmotionTag = false;
+
+        foreach(string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+
+            if(splitTag.Length != 2)
+            {
+                Debug.Log("tag cant be parsed:" + tag);
+            }
+
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+    
+
+        switch(tagKey)
+         {
+            case SPEAKER_TAG:
+            SpeakerText.text = tagValue;
+            currentspeaker = tagValue.ToLower();
+            hasSpeakerTag = true;
+                break;
+            case TEXTSTYLE_TAG:
+                DialogueText.fontStyle = FontStyles.Italic;
+                hasTextstyleTag = true;
+                break;
+            case EMOTION_TAG:
+            emotion = tagValue.ToLower();
+            emotionanimator.Play(emotion);
+            hasEmotionTag = true;
+            break;
+            case LAYOUT_TAG:
+            layout = tagValue.ToLower();
+            break;
+            default:
+            Debug.LogWarning("tag is not possible " + tag);
+            break;
+         }
+        }
+
+        if(!hasTextstyleTag)
+        {
+            DialogueText.fontStyle = FontStyles.Normal;
+        }
+
+        if(!hasSpeakerTag)
+        {
+            SpeakerText.text = "";
+        }
+
+        emotionLayout();
+       
     }
 
     public void ChoiceButtonClick(Choice choice)
@@ -103,19 +221,94 @@ public class inkStory : MonoBehaviour
         // Creates the button from a prefab
 		Button choice = Instantiate (button) as Button;
 		choice.transform.SetParent (ButtonHolder.transform, false);
+        
 		
 		// Gets the text from the button prefab
 		TextMeshProUGUI choiceText = choice.GetComponentInChildren<TextMeshProUGUI> ();
 		choiceText.text = text;
 
+
 		// Make the button expand to fit the text
-		HorizontalLayoutGroup layoutGroup = choice.GetComponent<HorizontalLayoutGroup>();
+		VerticalLayoutGroup layoutGroup = choice.GetComponent<VerticalLayoutGroup>();
 		layoutGroup.childForceExpandHeight = true;
         layoutGroup.childScaleHeight = true;
+
+
+        
 
 		return choice;
     }
 
+    private IEnumerator Typing(string text)
+    {
+       
+       DialogueText.text = "";
+       isTyping = true;
 
+       foreach(char c in text)
+       {
+         if (currentspeaker == "you" && hasSpeakerTag)
+         {
+            audioSource.pitch = Random.Range(1, 1.3f);
+            audioSource.PlayOneShot(textSound);
+         }
+         else if (currentspeaker == "her" && hasSpeakerTag)
+         {
+            audioSource.pitch = Random.Range(0.5f, 0.8f);
+            audioSource.PlayOneShot(textSound);
+         }
+         else if (!hasSpeakerTag)
+         {
+            audioSource.Stop();
+         }
+       
+        DialogueText.text += c;
+        yield return new WaitForSeconds(0.015f);
+       }
+
+        
+
+       choicecheck = false;
+       isTyping = false;
+       
+    }
+
+    public void SkipTyping()
+     {
+        StopCoroutine(typingcoroutine);
+        DialogueText.text = testStory.currentText;
+
+        DialogueText.text = fullline;
+        choicecheck = false;
+        isTyping = false;
+     }
+
+
+    public void emotionLayout()
+    {
+
+        if (layout == "left" && hasEmotionTag)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            layoutanimator.Play("left");
+                Debug.Log("left");
+        }
+        else if(layout == "right" && hasEmotionTag)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            layoutanimator.Play("right");
+            Debug.Log("right");
+        }
+        else
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+        }
+    }
+
+     
+    
 
 }
