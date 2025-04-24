@@ -65,13 +65,13 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 [the girl scoffs, staring up at the ceiling as the silence between them stretches out into the obnoxious buzz of the light] 
 
-[in the middle of the bunker lays a table with a small drawer, 2 chairs sat side by side revealing what looks to be a broken radio sitting on top of it.]
+[in the middle of the bunker lays a table with a chair and a small drawer , revealing what looks to be a broken radio sitting on top of it.]
 
 [a large shelf stands against the back wall,various cans of soup scattered across the shelves, and a cabinet which is locked.]
 
-[on the floor, 2 flimsy mattresses are laid out with ragged covers thrown over the top of them.]
+[on the floor, 2 flimsy beds are laid out with ragged covers thrown over the top of them.]
 
-[a ragged axe is hung on the wall, above it a ventilation shaft spinning slowly.]
+[a ragged axe is propped against shelf, above it a ventilation shaft spinning slowly.]
 
 ->examinechoices
 
