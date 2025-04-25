@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b4da96d7e7006504a97bd0d4f3df9d89
+guid: 7c1a29ae73e595b4a8c56129de195a8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3807288400287755211
-    second: bunkertest2_0
+      213: -8544222133883064043
+    second: dialogueboxtest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bunkertest2_0
+      name: dialogueboxtest_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 315
+        y: 317
+        width: 1290
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bcbed90d0a436d430800000000000000
-      internalID: 3807288400287755211
+      spriteID: 511bedb0d33dc6980800000000000000
+      internalID: -8544222133883064043
       vertices: []
       indices: 
       edges: []
@@ -147,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dialogueboxtest_0: -8544222133883064043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

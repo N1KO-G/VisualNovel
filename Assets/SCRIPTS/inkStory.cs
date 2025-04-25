@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Random = UnityEngine.Random;
 using UnityEditor.Overlays;
+using Unity.VisualScripting;
 
 
 
@@ -46,6 +47,11 @@ public class inkStory : MonoBehaviour
     public CanvasGroup canvasGroup;
     private string layout;
 
+    //images
+    public SpriteRenderer spriteHolder;
+    public Sprite[] spritelist;
+    private string imagename;
+
   
 
     //tags
@@ -53,6 +59,10 @@ public class inkStory : MonoBehaviour
     private const string TEXTSTYLE_TAG = "textstyle";
     private const string EMOTION_TAG = "emotion";
     private const string LAYOUT_TAG = "layout";
+
+    private const string IMAGE_TAG = "image";
+
+    private const string FADEIN_TAG = "fadein";
 
     //speaker holder
     private string currentspeaker;
@@ -155,6 +165,9 @@ public class inkStory : MonoBehaviour
             case LAYOUT_TAG:
             layout = tagValue.ToLower();
             break;
+            case IMAGE_TAG:
+            imagename = tagValue.ToLower();
+            break;
             default:
             Debug.LogWarning("tag is not possible " + tag);
             break;
@@ -172,6 +185,7 @@ public class inkStory : MonoBehaviour
         }
 
         emotionLayout();
+        backgroundimage();
        
     }
 
@@ -308,6 +322,16 @@ public class inkStory : MonoBehaviour
         }
     }
 
+    public void backgroundimage()
+    {
+        switch(imagename)
+        {
+            case "black" : spriteHolder.sprite = spritelist[0];  break;
+            case "day1" : spriteHolder.sprite = spritelist[1];  break;
+            case "background1" : spriteHolder.sprite = spritelist[2];  break;
+        }
+        
+    }
      
     
 

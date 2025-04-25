@@ -35,6 +35,8 @@ VAR duvet = false
 
 === PROLOGUE ===
 
+#image: black
+
 Ever since the bombs, this world has fallen into madness, survival is the common goal. #speaker: you #textstyle:italic
 Nothing will ever be the same as before. i had a family, children and now everyone i love is gone, except this girl. #speaker: you #textstyle:italic
 we must survive, i have to protect her. #speaker: you #textstyle:italic
@@ -43,12 +45,21 @@ we leave this place, it is inevitable that we will die. #speaker: you #textstyle
 we have enough food and water to last 3 days, then our chances of survival run thin. #speaker: you #textstyle:italic
 we will not die. #speaker: you #textstyle:italic
 
-  
+
+#image:day1
+
+/
+/
+/
+/
+/
   
 
  ->DAY1
 
 === DAY1 ===
+
+#image : background1
 
 [the bunker is dimly lit by a buzzing light, the air filled with thick with dust. the girl lays there in silence, pale and malnourished]
 
@@ -56,7 +67,9 @@ Three days, just three more days. then we find out whats going to happen to us n
  
 "Hey, how you doing? you dont look too good." #speaker: you  #emotion : man_neutral #layout : left
 
-"really, you dont think i look good, OBVIOUSLY i dont look good. weve been in this prison for almost a week now, and i doubt we are making it out of here alive." #speaker : her  #emotion : girl_annoyed #layout : right
+"really, you dont think i look good, OBVIOUSLY i dont look good." #speaker : her  #emotion : girl_annoyed #layout : right
+
+"weve been in this prison for almost a week now, and i doubt we are making it out of here alive." #speaker : her  #emotion : girl_annoyed #layout : right
 
  "better a prison than a grave, we are going to make it out of here alive, we just need to believe." #speaker : you  #emotion: man_neutral #layout : left
 
