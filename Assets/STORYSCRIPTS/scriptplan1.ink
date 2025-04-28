@@ -48,11 +48,12 @@ we will not die. #speaker: you #textstyle:italic
 
 #image:day1
 
-/
-/
-/
-/
-/
+<br>
+
+
+
+
+
   
 
  ->DAY1
@@ -90,7 +91,7 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 =examinechoices
 
-* [EXAMINE THE RADIO.]
+* [examine the radio]
 this radio might be our only chance of survival, i need to fix it. #speaker : you #textstyle:italic
 [as you look at the desk, you notice an old drawer]
 ~choicesseen++
@@ -98,12 +99,12 @@ this radio might be our only chance of survival, i need to fix it. #speaker : yo
     *** [walk away] better keep looking #speaker : you #textstyle:italic
         ->examinechoices
                           
-* [EXAMINE THE LOCKED CABINET.]
+* [examine the locked cabinet]
 ~ choicesseen++
  this cabinet has been locked ever since we got here. i wonder where the key is? #speaker : you #textstyle:italic
 ->examinechoices
           
-*[EXAMINE THE VENTILATION SHAFT.]
+*[examine the ventilation shaft]
 ~choicesseen++
  this vent hasnt worked since we got in here. it looks quite flimsy, this might come in useful later. #speaker : you #textstyle:italic
 ->examinechoices
@@ -120,7 +121,7 @@ as i walk over to the bed, i see something poking out of the side of the pulled 
 i put my hand on it and realise its inside of the mattress. what the hell is that? #speaker : you #textstyle:italic
                         ->bedandaxe
 =bedandaxe
-* [TAKE THE AXE AND CUT OPEN THE MATTRESS]
+* [cut open the mattress]
     i might regret this... #speaker : you #textstyle:italic
     "hey what the hell are you doing?!" #speaker : her #emotion: girl_neutral #layout : right
     "shut up for a second." #speaker : you #emotion: man_annoyed #layout : left
@@ -136,7 +137,7 @@ i put my hand on it and realise its inside of the mattress. what the hell is tha
     ~ duvet = true
     -> DAY2
            
-* LEAVE THE MATTRESS
+* leave the mattress
     i dont really want to slash up my mattress to get whatever is inside, i already sleep little enough, dont want even less #speaker : you #textstyle:italic
 	[you lie in bed, falling into a deep sleep]
     ->DAY2
@@ -351,13 +352,13 @@ theyre here. both of our eyes lock onto the door. #speaker : you #textstyle:ital
 ->doorchoices
  
  =doorchoices
-	      * [OPEN THE DOOR] i slowly open the door, then i notice it. a man and women in torn clothes stand in front of me, a gun pointed at my head. #speaker : you #textstyle:italic
+	      * [open the door] i slowly open the door, then i notice it. a man and women in torn clothes stand in front of me, a gun pointed at my head. #speaker : you #textstyle:italic
 	        ~ door += opened
                  {axestate ? (off) && gunstate ? (on) && wirestate ? (on):  ->opendoor1}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (on):  ->opendoor2}
                 {axestate ? (off) && gunstate ? (on) && wirestate ? (off):  ->opendoor3}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (off):  ->opendoor4}
-          *  [DONT OPEN THE DOOR]  "times up,  we are coming in!" #speaker : ??? #emotion: them_neutral #layout : right
+          *  [dont open the door]  "times up,  we are coming in!" #speaker : ??? #emotion: them_neutral #layout : right
             ~door += unopened
                 {axestate ? (off) && gunstate ? (on) && wirestate ? (on): -> dontopendoor1}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (on): ->dontopendoor2}

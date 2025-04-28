@@ -17,18 +17,22 @@ public class inkStory : MonoBehaviour
 {
     public static event Action<Story> OnCreateStory;
 
-    [SerializeField] private Canvas canvas = null;
+   
     [SerializeField] private GameObject ButtonHolder;
     [SerializeField] private bool choicecheck;
     [SerializeField] private bool hasSpeakerTag;
     [SerializeField] private bool hasTextstyleTag;
      [SerializeField] private bool hasEmotionTag;
     [SerializeField] private bool isTyping = false;
+    [SerializeField] public bool fading = false;
 
     // this the JSON
     public TextAsset JSONAsset;
     //this the story itself
     Story testStory;
+
+    //canvas
+    public CanvasGroup canvasGroup2;
     
     //audio 
     public AudioSource audioSource;
@@ -49,9 +53,12 @@ public class inkStory : MonoBehaviour
 
     //images
     public SpriteRenderer spriteHolder;
+    public SpriteRenderer spriteHolder2;
     public Sprite[] spritelist;
     private string imagename;
+    public Animator fadeinAnimator;
 
+    RectTransform buttonholderRT;
   
 
     //tags
@@ -59,14 +66,12 @@ public class inkStory : MonoBehaviour
     private const string TEXTSTYLE_TAG = "textstyle";
     private const string EMOTION_TAG = "emotion";
     private const string LAYOUT_TAG = "layout";
-
     private const string IMAGE_TAG = "image";
-
-    private const string FADEIN_TAG = "fadein";
+ 
 
     //speaker holder
     private string currentspeaker;
-
+    private string fadetiming;
     private string emotion;
 
 
@@ -77,6 +82,7 @@ public class inkStory : MonoBehaviour
 
     public void Awake()
     {
+        buttonholderRT = ButtonHolder.GetComponent<RectTransform>();
         testStory = new Story(JSONAsset.text);
         if(OnCreateStory != null) OnCreateStory(testStory);
         ContinueStory();
@@ -84,7 +90,7 @@ public class inkStory : MonoBehaviour
 
      public void Update()
      {
-         if(Input.GetKeyDown(KeyCode.E))
+         if(Input.GetKeyDown(KeyCode.E) && !fading)
          {
            if (isTyping)
            {
@@ -95,6 +101,19 @@ public class inkStory : MonoBehaviour
              ContinueStory();
            }
          }
+
+          if(fading)
+           {
+             canvasGroup2.alpha = 0;
+             canvasGroup2.interactable = false;
+             canvasGroup2.blocksRaycasts = false;
+           }
+         else
+         {
+             canvasGroup2.alpha = 1;
+             canvasGroup2.interactable = true;
+             canvasGroup2.blocksRaycasts = true;
+         }
      }
 
 
@@ -102,6 +121,7 @@ public class inkStory : MonoBehaviour
 
     public void ContinueStory()
     {
+
     
           //running through a loop to check if the story can continue
         if (testStory.canContinue)
@@ -114,6 +134,8 @@ public class inkStory : MonoBehaviour
            {
             StopCoroutine(typingcoroutine);
            }
+
+           
            typingcoroutine = StartCoroutine(Typing(line));
 
            Handletags(testStory.currentTags);
@@ -236,6 +258,7 @@ public class inkStory : MonoBehaviour
 		Button choice = Instantiate (button) as Button;
 		choice.transform.SetParent (ButtonHolder.transform, false);
         
+        
 		
 		// Gets the text from the button prefab
 		TextMeshProUGUI choiceText = choice.GetComponentInChildren<TextMeshProUGUI> ();
@@ -244,8 +267,9 @@ public class inkStory : MonoBehaviour
 
 		// Make the button expand to fit the text
 		VerticalLayoutGroup layoutGroup = choice.GetComponent<VerticalLayoutGroup>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(buttonholderRT);
 		layoutGroup.childForceExpandHeight = true;
-        layoutGroup.childScaleHeight = true;
+        layoutGroup.childScaleHeight = false;
 
 
         
@@ -324,15 +348,22 @@ public class inkStory : MonoBehaviour
 
     public void backgroundimage()
     {
+    
         switch(imagename)
         {
             case "black" : spriteHolder.sprite = spritelist[0];  break;
-            case "day1" : spriteHolder.sprite = spritelist[1];  break;
+            case "day1" : spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(4f));break;
             case "background1" : spriteHolder.sprite = spritelist[2];  break;
         }
         
     }
-     
     
+    public IEnumerator timer(float fadetime)
+    {
+        fading = true;
+        yield return new WaitForSeconds(fadetime);
+        fading = false;
+        ContinueStory();
+    }
 
 }

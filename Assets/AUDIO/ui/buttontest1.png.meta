@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 80a664eeefdd9a34881f10b7d97c8a23
+guid: dc40904cb1163204e92969bde204b187
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7576362501365620710
-    second: DAY2SCREEN_0
+      213: -1115821363833523275
+    second: buttontest1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DAY2SCREEN_0
+      name: buttontest1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6efdc7fbd85a42960800000000000000
-      internalID: 7576362501365620710
+      spriteID: 5b339e7a16ec380f0800000000000000
+      internalID: -1115821363833523275
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DAY2SCREEN_0: 7576362501365620710
+      buttontest1_0: -1115821363833523275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
