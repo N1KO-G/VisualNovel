@@ -385,6 +385,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: -2353273568863970938, guid: d4c010cc24ea7a84c8e922a1e8fbe8a7, type: 3}
   - {fileID: 4196559305901879502, guid: e17acbe6d989bd241ad4695be3459d98, type: 3}
+  - {fileID: -1354963261467282110, guid: 2979511986223a54ba857aadb4f7854f, type: 3}
+  - {fileID: 3053483832358989452, guid: d60763fc591a98744a792e27d438b9c9, type: 3}
+  - {fileID: 2696599954182759011, guid: b413cf4979e93984a96e691531b8b01a, type: 3}
+  - {fileID: 8820971095343330988, guid: a1ab324776492c84a98aa53e5699de4a, type: 3}
   fadeinAnimator: {fileID: 474015069}
 --- !u!4 &421530172
 Transform:

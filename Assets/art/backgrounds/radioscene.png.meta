@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 80a664eeefdd9a34881f10b7d97c8a23
+guid: 2979511986223a54ba857aadb4f7854f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7576362501365620710
-    second: DAY2SCREEN_0
+      213: -1354963261467282110
+    second: radioscene_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DAY2SCREEN_0
+      name: radioscene_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6efdc7fbd85a42960800000000000000
-      internalID: 7576362501365620710
+      spriteID: 245b984b714323de0800000000000000
+      internalID: -1354963261467282110
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DAY2SCREEN_0: 7576362501365620710
+      radioscene_0: -1354963261467282110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -354,6 +354,11 @@ public class inkStory : MonoBehaviour
             case "black" : spriteHolder.sprite = spritelist[0];  break;
             case "day1" : spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(4f));break;
             case "background1" : spriteHolder.sprite = spritelist[2];  break;
+            case "radio1" : spriteHolder.sprite = spritelist[3];  break;
+            case "drawer1" : spriteHolder.sprite = spritelist[4];  break;
+            case "closet1" : spriteHolder.sprite = spritelist[5];  break;
+            case "vent1" : spriteHolder.sprite = spritelist[6];  break;
+            
         }
         
     }

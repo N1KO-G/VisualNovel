@@ -89,24 +89,29 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 ->examinechoices
 
-=examinechoices
+=examinechoices 
+
+#image: background1
+
+
 
 * [examine the radio]
+~choicesseen++ 
+#image : radio1
 this radio might be our only chance of survival, i need to fix it. #speaker : you #textstyle:italic
-[as you look at the desk, you notice an old drawer]
-~choicesseen++
-    ** [open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with #speaker : you #textstyle:italic
-    *** [walk away] better keep looking #speaker : you #textstyle:italic
-        ->examinechoices
+[as you look at the desk, you notice an old drawer] 
+**[open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with #speaker : you #textstyle:italic #image: drawer1
+*** [walk away] better keep looking #speaker : you #textstyle:italic #image: background1
+->examinechoices
                           
 * [examine the locked cabinet]
 ~ choicesseen++
- this cabinet has been locked ever since we got here. i wonder where the key is? #speaker : you #textstyle:italic
+ this cabinet has been locked ever since we got here. i wonder where the key is? #speaker : you #textstyle:italic #image: closet1
 ->examinechoices
           
 *[examine the ventilation shaft]
 ~choicesseen++
- this vent hasnt worked since we got in here. it looks quite flimsy, this might come in useful later. #speaker : you #textstyle:italic
+ this vent hasnt worked since we got in here. it looks quite flimsy, this might come in useful later. #speaker : you #textstyle:italic #image: vent1
 ->examinechoices
 
 * {choicesseen ==3} [lie down on bed] ->tiredpart
@@ -144,6 +149,8 @@ i put my hand on it and realise its inside of the mattress. what the hell is tha
  
  
 === DAY2 ===
+
+#image : background1
 
 "HEY! HEY! get up! can you not hear that!?" #speaker : her #emotion: girl_angry #layout : right
 
@@ -198,6 +205,7 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
 =afterlightbulb
  we only have 1 more day of food left, i cant let mind wander. i need to look around the bunker. #speaker : you #textstyle:italic
  ->2nddaychoices
+
 
 
 = 2nddaychoices
