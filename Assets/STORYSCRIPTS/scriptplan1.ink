@@ -79,7 +79,7 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 [the girl scoffs, staring up at the ceiling as the silence between them stretches out into the obnoxious buzz of the light] 
 
-[in the middle of the bunker lays a table with a chair and a small drawer , revealing what looks to be a broken radio sitting on top of it.]
+[in the middle of the bunker lays a table with a chair and a small drawer , revealing what looks to be a broken radio sitting on top.]
 
 [a large shelf stands against the back wall,various cans of soup scattered across the shelves, and a cabinet which is locked.]
 
@@ -87,41 +87,40 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 [a ragged axe is propped against shelf, above it a ventilation shaft spinning slowly.]
 
-->examinechoices
+->examinechoices 
 
 =examinechoices 
 
-#image: background1
 
 
-
-* [examine the radio]
+* [examine the radio] this radio might be our only chance of survival, i need to fix it. #speaker : you #textstyle:italic #image : radio1
 ~choicesseen++ 
-#image : radio1
-this radio might be our only chance of survival, i need to fix it. #speaker : you #textstyle:italic
 [as you look at the desk, you notice an old drawer] 
-**[open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with #speaker : you #textstyle:italic #image: drawer1
-*** [walk away] better keep looking #speaker : you #textstyle:italic #image: background1
-->examinechoices
+    **[open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with #speaker : you #textstyle:italic #image: drawer1
+        *** [walk away] better keep looking #speaker : you #textstyle:italic #image: background1
+->examinechoices 
                           
 * [examine the locked cabinet]
 ~ choicesseen++
  this cabinet has been locked ever since we got here. i wonder where the key is? #speaker : you #textstyle:italic #image: closet1
-->examinechoices
+ **[walk away] lets have a look somewhere else. #speaker : you #textstyle:italic #image: background1
+->examinechoices 
           
 *[examine the ventilation shaft]
 ~choicesseen++
- this vent hasnt worked since we got in here. it looks quite flimsy, this might come in useful later. #speaker : you #textstyle:italic #image: vent1
+ this vent hasnt worked since we got in here. it looks quite flimsy, might come in useful later. #speaker : you #textstyle:italic #image: vent1
+ **[walk away] anything else around here? #speaker : you #textstyle:italic #image: background1
 ->examinechoices
 
 * {choicesseen ==3} [lie down on bed] ->tiredpart
- 
  =tiredpart
+ #image : bedimage
+ 
 "im getting tired, im gonna gonna go to sleep, make sure to get some rest" #speaker : you #emotion : man_neutral  #layout : left
 
 "yeah, whatever" #speaker : her #emotion : girl_sad  #layout : right
 
-as i walk over to the bed, i see something poking out of the side of the pulled off bedsheet, its too faint to make out what it is.  #speaker : you #textstyle:italic
+as i walk over to the bed, i see something poking out of the bed, its too faint to make out what it is.  #speaker : you #textstyle:italic  #image : bednote
 
 i put my hand on it and realise its inside of the mattress. what the hell is that? #speaker : you #textstyle:italic
                         ->bedandaxe
@@ -130,21 +129,26 @@ i put my hand on it and realise its inside of the mattress. what the hell is tha
     i might regret this... #speaker : you #textstyle:italic
     "hey what the hell are you doing?!" #speaker : her #emotion: girl_neutral #layout : right
     "shut up for a second." #speaker : you #emotion: man_annoyed #layout : left
-    i carefully slice the mattress open, revealing what seems to be a small envolope containing a small letter #speaker : you #textstyle:italic
-    on the letter is a drawing of the bunker, however, it seems that the LAMP is circled #speaker : you #textstyle:italic
+    i carefully slice the mattress open, revealing what seems to be a small envolope containing a small letter #speaker : you #textstyle:italic  #image : lightnote
+    on the letter is a drawing of a circled lamp. #speaker : you #textstyle:italic
     "what the hell does that mean?" #speaker : you #emotion: man_angry  #layout : left
     "what is it?" #speaker : her #emotion: girl_neutral #layout : right
-    "here, have a look" #speaker : you  #emotion: man_neutral #layout : left
-    "hmm, surely this has to mean something important. but who even left this here?" #speaker : her  #layout : right
+    "here, have a look" #speaker : you  #emotion: man_neutral #layout : left # image :background1
+    "hmm, surely this has to mean something important. but who even left this here?"  #speaker : her #emotion: girl_neutral  #layout : right
     [she passes you the note] 
-    this has to mean something, but im too tired to even think right now. great, my mattress is ripped up now too #speaker : you #textstyle:italic
+    this has to mean something, but im too tired to even think right now.my mattress is ripped up now too. #speaker : you #emotion: man_neutral #textstyle:italic
     [you lie in the tattered bed, dozing off immediately]
     ~ duvet = true
+    #image:day2
+
+    <br>
     -> DAY2
            
-* leave the mattress
-    i dont really want to slash up my mattress to get whatever is inside, i already sleep little enough, dont want even less #speaker : you #textstyle:italic
+* [leave the mattress] i dont really want to slash up my mattress to get whatever is inside, i already sleep little enough, dont want even less #speaker : you #textstyle:italic #image : bedimage
 	[you lie in bed, falling into a deep sleep]
+	    #image:day2
+
+    <br>
     ->DAY2
  
  
@@ -163,25 +167,29 @@ as i struggle to wake up, i hear it. loud obnoxious banging rings against the do
 "i dont fucking know, it woke me up and obviusly i came straight to you!" #speaker : her #emotion: girl_annoyed  #layout : right
 
  "stay here." #speaker: you  #emotion: man_neutral #layout : left
+ 
+ #image : door1
 
 as i step towards the door, my heart pounds harder and harder. then, it stops. #speaker : you #textstyle:italic
 
 i hear some shuffling, then a note slides under the door. #speaker : you #textstyle:italic
 
-the writing is uneven, rushed, it says "WE ARE HERE TO HELP, WE WILL BE BACK TOMMOROW. LET US IN OR WE COME IN OURSELVES" #speaker : you #textstyle:italic
+the writing is uneven, rushed, it says "WE ARE HERE TO HELP, WE WILL BE BACK TOMMOROW. LET US IN OR WE COME IN OURSELVES" #speaker : you #textstyle:italic #image : themnote
 
 [silence fills the room, as steps get further and further away]
 
-"you dont really believe this crap right? they are clearly lying to us." #speaker : her  #emotion: girl_angry #layout : right
+"you dont really believe this crap right? they are clearly lying to us." #speaker : her  #emotion: girl_angry #layout : right #image: background1
 
 "i have no clue, but our time is running out. this might be our only hope." #speaker: you #emotion: man_sad #layout : left
 {duvet: ->lightbulb | ->afterlightbulb} 
 
 =lightbulb
+#image : lightnote
 as i look at this note, my mind wanders, then i remember the note with the lamp. #speaker : you #textstyle:italic
 i go to look at the lightbulb, wondering what the note might be trying to say #speaker : you #textstyle:italic
                  
 * unscrew the lightbulb
+  #image :lightshot1
      [you unscrew the lightbulb]
       "oh shit!" #speaker: you #emotion: man_happy #layout : left
      [the hot light burns your hand, dropping to the floor and smashing into many pieces] 
@@ -191,8 +199,8 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
       "oh, well there is a keyhole on the cupboard, come try it" #speaker : her #emotion: girl_neutral #layout : right
      [you walk to the cupboard, sliding the key into the keyhole, turning it.]
 	 [...]
-     [Click]
-     [you pull open the cupboard. a gun with 3 bullets lies inside]
+     [Click] #image : gunshot1
+     [you pull open the cupboard. a gun with bullets lies inside] 
       "oh god, theres a gun inside" #speaker: you #emotion: man_happy #layout : left 
      "thats great! we can defend ourselves now." #speaker : her #emotion: girl_happy #layout : right
      "lets hope it doesnt come to that" #speaker: you #emotion: girl_sad #layout : left
@@ -203,6 +211,7 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
       -> afterlightbulb
 
 =afterlightbulb
+#image : background1
  we only have 1 more day of food left, i cant let mind wander. i need to look around the bunker. #speaker : you #textstyle:italic
  ->2nddaychoices
 
@@ -210,6 +219,7 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
 
 = 2nddaychoices
 + [EXAMINE THE DESK.]
+#image :drawer1
   ~radiostate += checked
   {radiostate ? (opened): ->alreadyopened} 
    **{fanstate ? (on)} [pry the false bottom] -> pry 
@@ -217,6 +227,7 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
  ->2nddaychoices
   
 + [EXAMINE THE CABINET.] 
+#image: closet1
  ~closetstate += checked
   {closetstate ?(opened): ->alreadyopened}
   {axestate ? (off): ->alreadyopened}
@@ -227,6 +238,7 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
 
 
 + [EXAMINE THE VENTILATION SHAFT.] 
+#image: vent1
  ~ventstate += checked 
  {ventstate ? (opened): ->alreadyopened}
  {axestate ?(off): ->alreadyopened}
@@ -334,6 +346,10 @@ let me have a look somewhere else. #speaker : you #textstyle:italic
 "goodnight." #speaker : her #emotion: girl_neutral #layout : right
 
 "night." #speaker: you  #emotion: man_neutral #layout : left
+
+ #image:day3
+
+ <br>
 
 -> DAY3
 

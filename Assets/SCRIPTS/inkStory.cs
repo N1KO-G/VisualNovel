@@ -244,7 +244,7 @@ public class inkStory : MonoBehaviour
                 choicecheck = true;
              }
         }
-        //player presents their input, then...
+      
     }
 
     public void ClickButton(Choice choice)
@@ -352,12 +352,21 @@ public class inkStory : MonoBehaviour
         switch(imagename)
         {
             case "black" : spriteHolder.sprite = spritelist[0];  break;
-            case "day1" : spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(4f));break;
+            case "day1" : spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(5f));break;
             case "background1" : spriteHolder.sprite = spritelist[2];  break;
             case "radio1" : spriteHolder.sprite = spritelist[3];  break;
             case "drawer1" : spriteHolder.sprite = spritelist[4];  break;
             case "closet1" : spriteHolder.sprite = spritelist[5];  break;
             case "vent1" : spriteHolder.sprite = spritelist[6];  break;
+            case "bedimage" : spriteHolder.sprite = spritelist[7];  break;
+             case "lightnote" : spriteHolder.sprite = spritelist[8];  break;
+             case "day2" : spriteHolder2.sprite = spritelist[9]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
+            case "day3" : spriteHolder2.sprite = spritelist[10]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
+            case "bednote" : spriteHolder.sprite = spritelist[11];  break;
+            case "door1" : spriteHolder.sprite = spritelist[12];  break;
+             case "lightshot1" : spriteHolder.sprite = spritelist[13];  break;
+             case "gunshot1" : spriteHolder.sprite = spritelist[14];  break;
+
             
         }
         
