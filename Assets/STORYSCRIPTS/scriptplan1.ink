@@ -91,13 +91,11 @@ Three days, just three more days. then we find out whats going to happen to us n
 
 =examinechoices 
 
-
-
 * [examine the radio] this radio might be our only chance of survival, i need to fix it. #speaker : you #textstyle:italic #image : radio1
 ~choicesseen++ 
 [as you look at the desk, you notice an old drawer] 
-    **[open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with #speaker : you #textstyle:italic #image: drawer1
-        *** [walk away] better keep looking #speaker : you #textstyle:italic #image: background1
+    **[open desk drawer] something seems off about the bottom of this drawer, if only i had a knife or something to pry it open with. #speaker : you #textstyle:italic #image: drawer1
+        *** [walk away] better keep looking. #speaker : you #textstyle:italic #image: background1
 ->examinechoices 
                           
 * [examine the locked cabinet]
@@ -116,9 +114,9 @@ Three days, just three more days. then we find out whats going to happen to us n
  =tiredpart
  #image : bedimage
  
-"im getting tired, im gonna gonna go to sleep, make sure to get some rest" #speaker : you #emotion : man_neutral  #layout : left
+"im getting tired, im gonna gonna go to sleep, make sure to get some rest." #speaker : you #emotion : man_neutral  #layout : left
 
-"yeah, whatever" #speaker : her #emotion : girl_sad  #layout : right
+"yeah, whatever." #speaker : her #emotion : girl_sad  #layout : right
 
 as i walk over to the bed, i see something poking out of the bed, its too faint to make out what it is.  #speaker : you #textstyle:italic  #image : bednote
 
@@ -129,11 +127,11 @@ i put my hand on it and realise its inside of the mattress. what the hell is tha
     i might regret this... #speaker : you #textstyle:italic
     "hey what the hell are you doing?!" #speaker : her #emotion: girl_neutral #layout : right
     "shut up for a second." #speaker : you #emotion: man_annoyed #layout : left
-    i carefully slice the mattress open, revealing what seems to be a small envolope containing a small letter #speaker : you #textstyle:italic  #image : lightnote
+    i carefully slice the mattress open, revealing what seems to be a small envolope containing a small letter. #speaker : you #textstyle:italic  #image : lightnote
     on the letter is a drawing of a circled lamp. #speaker : you #textstyle:italic
     "what the hell does that mean?" #speaker : you #emotion: man_angry  #layout : left
     "what is it?" #speaker : her #emotion: girl_neutral #layout : right
-    "here, have a look" #speaker : you  #emotion: man_neutral #layout : left # image :background1
+    "here, have a look." #speaker : you  #emotion: man_neutral #layout : left # image :background1
     "hmm, surely this has to mean something important. but who even left this here?"  #speaker : her #emotion: girl_neutral  #layout : right
     [she passes you the note] 
     this has to mean something, but im too tired to even think right now.my mattress is ripped up now too. #speaker : you #emotion: man_neutral #textstyle:italic
@@ -158,7 +156,7 @@ i put my hand on it and realise its inside of the mattress. what the hell is tha
 
 "HEY! HEY! get up! can you not hear that!?" #speaker : her #emotion: girl_angry #layout : right
 
-as i struggle to wake up, i hear it. loud obnoxious banging rings against the door to the bunker #speaker : you #textstyle:italic 
+as i struggle to wake up, i hear it. loud obnoxious banging rings against the door to the bunker. #speaker : you #textstyle:italic 
 
 [BANG, BANG, BANG]
 
@@ -174,7 +172,7 @@ as i step towards the door, my heart pounds harder and harder. then, it stops. #
 
 i hear some shuffling, then a note slides under the door. #speaker : you #textstyle:italic
 
-the writing is uneven, rushed, it says "WE ARE HERE TO HELP, WE WILL BE BACK TOMMOROW. LET US IN OR WE COME IN OURSELVES" #speaker : you #textstyle:italic #image : themnote
+the writing is uneven, rushed, it says "WE ARE HERE TO HELP, WE WILL BE BACK TOMMOROW. LET US IN OR WE COME IN OURSELVES." #speaker : you #textstyle:italic #image : themnote
 
 [silence fills the room, as steps get further and further away]
 
@@ -188,22 +186,22 @@ the writing is uneven, rushed, it says "WE ARE HERE TO HELP, WE WILL BE BACK TOM
 as i look at this note, my mind wanders, then i remember the note with the lamp. #speaker : you #textstyle:italic
 i go to look at the lightbulb, wondering what the note might be trying to say #speaker : you #textstyle:italic
                  
-* unscrew the lightbulb
+* [unscrew the lightbulb]
   #image :lightshot1
      [you unscrew the lightbulb]
       "oh shit!" #speaker: you #emotion: man_happy #layout : left
      [the hot light burns your hand, dropping to the floor and smashing into many pieces] 
-	 [a key falls from the place where the lamp used to be]
+	 [a key falls from the place where the lamp used to be] #image :keyfloor
      "you okay?" #speaker : her #emotion: girl_neutral  #layout : right
-     "yeah, i guess that note really meant something huh, look at this key" #speaker: you #emotion: man_neutral #layout : left
-      "oh, well there is a keyhole on the cupboard, come try it" #speaker : her #emotion: girl_neutral #layout : right
+     "yeah, i guess that note really meant something huh, look at this key." #speaker: you #emotion: man_neutral #layout : left
+      "oh, well there is a keyhole on the cupboard, come try it." #speaker : her #emotion: girl_neutral #layout : right
      [you walk to the cupboard, sliding the key into the keyhole, turning it.]
 	 [...]
      [Click] #image : gunshot1
      [you pull open the cupboard. a gun with bullets lies inside] 
-      "oh god, theres a gun inside" #speaker: you #emotion: man_happy #layout : left 
+      "oh god, theres a gun inside." #speaker: you #emotion: man_happy #layout : left 
      "thats great! we can defend ourselves now." #speaker : her #emotion: girl_happy #layout : right
-     "lets hope it doesnt come to that" #speaker: you #emotion: girl_sad #layout : left
+     "lets hope it doesnt come to that." #speaker: you #emotion: man_neutral #layout : left
      ~closetstate+= opened
      ~closetstate-= unopened
      ~gunstate += on
@@ -218,43 +216,26 @@ i go to look at the lightbulb, wondering what the note might be trying to say #s
 
 
 = 2nddaychoices
-+ [EXAMINE THE DESK.]
-#image :drawer1
-  ~radiostate += checked
-  {radiostate ? (opened): ->alreadyopened} 
-   **{fanstate ? (on)} [pry the false bottom] -> pry 
-   ++[look elsewhere] -> looksomewhereelse
- ->2nddaychoices
+
++ [examine the desk] ->desk_examine
+
   
-+ [EXAMINE THE CABINET.] 
-#image: closet1
- ~closetstate += checked
-  {closetstate ?(opened): ->alreadyopened}
-  {axestate ? (off): ->alreadyopened}
-  ** {axestate ? (on)} [use the axe on the cabinet] -> cabinetaxe
-   ++[look elsewhere] -> looksomewhereelse
-   ->2nddaychoices 
++ [examine the cabinet] ->cabinet_examine
+  
+
++ [examine the ventilation shaft] ->vent_examine
 
 
 
-+ [EXAMINE THE VENTILATION SHAFT.] 
-#image: vent1
- ~ventstate += checked 
- {ventstate ? (opened): ->alreadyopened}
- {axestate ?(off): ->alreadyopened}
- ** {axestate ? (on)} [use the axe on the vent] ->ventaxe
-   ++[look elsewhere] -> looksomewhereelse
-   ->2nddaychoices
-
-* {ventstate ? (checked) && closetstate ? (checked) && radiostate ? (checked) && axestate ? (off)} [i think im done here.] 
- ->day3end
+* {ventstate ? (checked) && closetstate ? (checked) && radiostate ? (checked) && axestate ? (off)} [i think im done here.] ->day3end
 
 =alreadyopened
+#image :background1
 i dont think there is anything else i can do here.  #speaker : you #textstyle:italic
 ->2nddaychoices
 
 =pry
-
+#image : pry
 i jam the bottom of the drawer with the fanblade, pulling down hard. #speaker : you #textstyle:italic
 
 a small crack lifts up, revealing a hidden compartment, containing a small piece of coiled wire. #speaker : you #textstyle:italic
@@ -266,18 +247,18 @@ this might be useful later. #speaker : you #textstyle:italic
 ->2nddaychoices
 
 =cabinetaxe
-
+#image :axecabinet
 i have to find out whats in this closet, this is the only way. #speaker : you #textstyle:italic
 
 i swing the axe, aiming for the hinges on the closet door. #speaker : you #textstyle:italic
 
 the axe cracks and creaks, the handle forming a larger crack each time i swing. #speaker : you #textstyle:italic
 
-wood clashes against metal, the door eventually loosening and falling to the ground. #speaker : you #textstyle:italic
+wood clashes against metal, the door eventually loosening and falling to the ground. #speaker : you #textstyle:italic #image : cabinetdoorfloor
 
 i drop the axe, the handle now completely snapped, no way i can use this again. #speaker : you #textstyle:italic
 
-inside the closet sits a revolver, 3 bullets laying next to it. #speaker : you #textstyle:italic
+inside the closet sits a revolver, 3 bullets laying next to it. #speaker : you #textstyle:italic #image : gunshot1
 
 ~axestate -= on
 ~axestate += off
@@ -285,10 +266,11 @@ inside the closet sits a revolver, 3 bullets laying next to it. #speaker : you #
 ~gunstate += on
 ~closetstate += opened
 ~closetstate -= unopened
+#image : background1
 ->2nddaychoices
 
 =ventaxe
-
+#image : ventdestroyed
 the axe crashes against the fans on the ventilation shaft #speaker : you #textstyle:italic
 
 i swing repeatedly, the fanblades eventually dropping to the floor. #speaker : you #textstyle:italic
@@ -309,17 +291,50 @@ the axehead flies off, hitting the opposite wall #speaker : you #textstyle:itali
 ->2nddaychoices
 
 =looksomewhereelse
-let me have a look somewhere else. #speaker : you #textstyle:italic
+let me have a look somewhere else. #speaker : you #textstyle:italic #image :background1
 ->2nddaychoices
 
 
+= desk_examine 
+lets have a look here. #image :drawer1 #speaker : you #textstyle:italic
+  ~radiostate += checked
 
+ 
+ {radiostate ? (opened): ->alreadyopened} 
+  
+ *{fanstate ? (on)} [pry the false bottom] -> pry 
+   
+ +[look elsewhere] -> looksomewhereelse
+   
+ ->2nddaychoices
+ 
+ 
+=cabinet_examine
+ ~closetstate += checked
+{closetstate ?(opened): ->alreadyopened} {axestate ? (off): ->alreadyopened} maybe i could do something here. #image: closet1 #speaker : you #textstyle:italic
+
+ 
+ * {axestate ? (on)} [use the axe on the cabinet] -> cabinetaxe
+  
+ +[look elsewhere] -> looksomewhereelse
+   
+
+ 
+=vent_examine
+ ~ventstate += checked 
+{ventstate ? (opened): ->alreadyopened} {axestate ?(off): ->alreadyopened}  anything here? #image: vent1 #speaker : you #textstyle:italic
+ 
+* {axestate ? (on)} [use the axe on the vent] ->ventaxe
+ 
+ +[look elsewhere] -> looksomewhereelse
+   ->2nddaychoices
+   
+->END
 
 =day3end
-
-"just one more day left." #speaker: you #emotion : man_neutral  #layout : left
+"just one more day left." #speaker: you #emotion : man_neutral  #layout : left #image :background1
  
- "what are we going to do??? we cant just die here" #speaker : her #emotion : girl_sad #layout : right
+"what are we going to do??? we cant just die here." #speaker : her #emotion : girl_sad #layout : right
 
  
 {gunstate ? (on) && axestate ? (off) && wirestate ? (on) && ventstate ?(opened): ->goated} 
@@ -333,7 +348,7 @@ let me have a look somewhere else. #speaker : you #textstyle:italic
 ->realday3ending
 
 =mid
-"i dont know, i really dont know, but all we can do is hope" #speaker : you #emotion: man_annoyed #layout : left
+"i dont know, i really dont know, but all we can do is hope." #speaker : you #emotion: man_annoyed #layout : left
 ->realday3ending
 
 =bad
@@ -354,35 +369,37 @@ let me have a look somewhere else. #speaker : you #textstyle:italic
 -> DAY3
 
 === DAY3 === 
+#image :background1
+they are going to be here soon, and i doubt they are going to be friendly. #speaker : you #textstyle:italic #layout : left
 
-they are going to be here soon, and i doubt they are going to be friendly #speaker : you #textstyle:italic
-
- "hey are you good? those people are going to come back soon, we need to be ready." #speaker: you #emotion: man_neutral  #layout : left
+"hey are you good? those people are going to come back soon, we need to be ready." #speaker: you #emotion: man_neutral  #layout : left
 
 "sorry, but i just cant believe this might be it for us. i really dont think we can trust them." #speaker : her #emotion: girl_sad #layout : right
 
- "you need to stay calm, we can make it out of this i promise you" #speaker: you #emotion: man_neutral #layout : left
+"you need to stay calm, we can make it out of this i promise you." #speaker: you #emotion: man_neutral #layout : left
 
- "i trust you, but i just dont see any way we survive after today." #speaker : her #emotion: girl_sad #layout : right
+"i trust you, but i just dont see any way we survive after today." #speaker : her #emotion: girl_sad #layout : right
 
 [silence fills the room as you wait for the inevitable]
 
 [steps suddenly start up outside the bunker. each step getting closer and closer until they come to a stop]
 
-theyre here. both of our eyes lock onto the door. #speaker : you #textstyle:italic
+theyre here. both of our eyes lock onto the door. #speaker : you #textstyle:italic #image :door1
 
-"HEY, we are back, if you open this door we can help you, we have a camp set up full of survivors. please, or we will have to let ourselves in ." #speaker : ??? #emotion: them_neutral #layout : right
+"HEY, we are back, if you open this door we can help you." #speaker : ???
+
+"we have a camp set up full of survivors. please just open the door, or we will have to let ourselves in." #speaker : ??? 
 
 ->doorchoices
  
  =doorchoices
-	      * [open the door] i slowly open the door, then i notice it. a man and women in torn clothes stand in front of me, a gun pointed at my head. #speaker : you #textstyle:italic
+	      * [open the door] i slowly open the door, then i notice it. a man and women in torn clothes stand in front of me, a gun pointed at my head. #speaker : you #textstyle:italic #image:gunpointed
 	        ~ door += opened
                  {axestate ? (off) && gunstate ? (on) && wirestate ? (on):  ->opendoor1}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (on):  ->opendoor2}
                 {axestate ? (off) && gunstate ? (on) && wirestate ? (off):  ->opendoor3}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (off):  ->opendoor4}
-          *  [dont open the door]  "times up,  we are coming in!" #speaker : ??? #emotion: them_neutral #layout : right
+          *  [dont open the door]  "times up,  we are coming in!" #speaker : ??? #emotion: them_neutral #layout : right #image :doorshot2
             ~door += unopened
                 {axestate ? (off) && gunstate ? (on) && wirestate ? (on): -> dontopendoor1}
                 {axestate ? (off) && gunstate ? (off) && wirestate ? (on): ->dontopendoor2}
@@ -392,66 +409,68 @@ theyre here. both of our eyes lock onto the door. #speaker : you #textstyle:ital
         
   =opendoor1
  
- "im sorry about this. but its everyone for themselves out here." #speaker : ??? #emotion: them_neutral #layout : right 
+"im sorry about this. but its everyone for themselves out here." #speaker : ??? #emotion: them_neutral #layout : right 
  
 its over. how could i let this happen. #speaker : you #textstyle:italic
+ #image:black
+i close my eyes, ready for my inevitable death. #speaker : you #textstyle:italic 
  
-i close my eyes, ready for my inevitable death. #speaker : you #textstyle:italic
+[BANG!]
  
- [BANG!]
+"WHAT THE F@~K! NO, WHAT DID YOU DO. THIS WASNT SUPPOSED TO GO LIKE THIS." #speaker : ??? #emotion: them_neutral #layout : right
  
- "WHAT THE F@~K! NO, WHAT DID YOU DO. THIS WASNT SUPPOSED TO GO LIKE THIS" #speaker : ??? #emotion: them_neutral #layout : right
+my eyes open wide, wondering why i havent died today. how am i still alive. #speaker : you #textstyle:italic
  
- my eyes open wide, wondering why i havent died today. how am i still alive. #speaker : you #textstyle:italic
- 
-then i look. the man lies dead, behind me the girl stands with hands cupped on a revolver #speaker : you #textstyle:italic
+then i look. the man lies dead, behind me the girl stands with hands cupped on a revolver #speaker : you #textstyle:italic #image:revolverpov
  
 she had to do it. we cant die like this. #speaker : you #textstyle:italic
  
-  "YOU KILLED HIM! YOU KILLED HIM!" #speaker : ??? #emotion: them_neutral #layout : right
+"YOU KILLED HIM! YOU KILLED HIM!" #speaker : ??? #emotion: them_neutral #layout : right
  
-  "you were going to kill us, she did what she had to do." #speaker : you #emotion: man_angry #layout : left
+"you were going to kill us, she did what she had to do." #speaker : you #emotion: man_angry #layout : left
  
 "just calm down, we dont want to kill you too." #speaker : you #emotion: annoyed #layout : left
  
- "NO, YOU ARE GOING TO PAY FOR THIS" #speaker : ???  #emotion: them_neutral #layout : right
+"NO, YOU ARE GOING TO PAY FOR THIS." #speaker : ???  #emotion: them_neutral #layout : right
  
-i wave to the girl to pass me the revolver. she does #speaker : you #textstyle:italic
+i wave to the girl to pass me the revolver. #speaker : you #textstyle:italic
+
+she does. #speaker : you #textstyle:italic
  
-  "im sorry." #speaker : you #emotion: man_sad  #layout : left
+"im sorry." #speaker : you #emotion: man_sad  #layout : left
  
- [BANG!]
+[BANG!]
  
- "oh god" #speaker : her  #emotion: girl_sad #layout : right
+"oh god" #speaker : her  #emotion: girl_sad #layout : right
  
- "there was nothing else we could do. you did well." #speaker : you #emotion: man_neutral  #layout : left
+"there was nothing else we could do. you did well." #speaker : you #emotion: man_neutral  #layout : left
  
- "what do we do now?" #speaker : her #emotion: girl_sad #layout : right
+"what do we do now?" #speaker : her #emotion: girl_sad #layout : right
  
-"i should be able to repair this radio with the wire we got from before, then we can call for help nearby. lets get rid of these bodies and take what we can" #speaker : you #emotion: man_neutral #layout : left
+"i should be able to repair this radio with the wire we got from before, then we can call for help nearby. lets get rid of these bodies and take what we can." #speaker : you #emotion: man_neutral #layout : left
  
-she looks at me in silence, visibly in disgust from the 2 bodies lying on the floor" #speaker : you #textstyle:italic
+she looks at me in silence, visibly in disgust from the 2 bodies lying on the floor." #speaker : you #textstyle:italic
  
- "just sit on the bed, ill take care of this. good people will come for us" #speaker : you #emotion: man_neutral #layout : left
+"just sit on the bed, ill take care of this. good people will come for us." #speaker : you #emotion: man_neutral #layout : left
  
- ->prologue1
+->prologue1
   
-  
+
   = opendoor2
- "im sorry about this. but its everyone for themselves out here." #speaker : ??? #emotion: them_neutral #layout : right
+"im sorry about this. but its everyone for themselves out here." #speaker : ??? #emotion: them_neutral #layout : right
   
-  "please dont do this." #speaker : you  #emotion: man_sad #layout : left
+"please dont do this." #speaker : you  #emotion: man_sad #layout : left
   
- its over. but i cant let this girl die. #speaker : you #textstyle:italic
+its over. but i cant let this girl die. #speaker : you #textstyle:italic
   
-  "RUN! CLIMB THROUGH THE VENT AND GET OUT OF HERE!" #speaker : you #emotion: man_angry  #layout : left
+"RUN! CLIMB THROUGH THE VENT AND GET OUT OF HERE!" #speaker : you #emotion: man_angry  #layout : left
   
- i run towards the 2 people in front of me, i have to buy some time #speaker : you #textstyle:italic
+i run towards the 2 people in front of me, i have to buy some time. #speaker : you #textstyle:italic
   
-  BANG!
-  BANG!
+BANG!
+BANG!
   
- i feel the blood draining out of my body, its a matter of time before i bleed out, atleast she has a chance to get away. #speaker : you #textstyle:italic
+i feel the blood draining out of my body, its a matter of time before i bleed out, atleast she has a chance to get away. #speaker : you #textstyle:italic
   
 all i hear is ringing as i watch the 2 people pass by me and enter the bunker. i did all i could. #speaker : you #textstyle:italic
   
@@ -467,7 +486,7 @@ its over. but i cant let this girl die. i have to do something. #speaker : you #
 
 i look on the desk drawer. the gun is our only chance of survival. #speaker : you #textstyle:italic
 
-i run and grab the gun, gripping it firmly between my hands #speaker : you #textstyle:italic
+i run and grab the gun, gripping it firmly between my hands. #speaker : you #textstyle:italic
 
 "HEY STOP!" #speaker : ???  #emotion: them_neutral #layout : right
 
@@ -475,65 +494,64 @@ BANG!
 
 BANG!
 
-we shot eachother. i feel blood seeping from my skin, looking towards the body laying on the ground in front of me #speaker : you #textstyle:italic
+we shot eachother. i feel blood seeping from my skin, looking towards the body laying on the ground in front of me. #speaker : you #textstyle:italic
    
-"oh god" #speaker : her #emotion: girl_sad #layout : right
+"oh god." #speaker : her #emotion: girl_sad #layout : right
 
 i look at the girl as she stares down at me. #speaker : you #textstyle:italic
 
- "NO, YOU CANT DIE!" #speaker : her #emotion: girl_angry #layout : right
+"NO, YOU CANT DIE!" #speaker : her #emotion: girl_angry #layout : right
 
-me - "you need to survive. im done for."
+"you need to survive, im done for."
 
 my eyes fade into darkness, as i hear screams fill the void of silence in the air. #speaker : you #textstyle:italic
 
    
-  ->prologue3
+->prologue3
   
   =opendoor4 
 "im sorry about this. but its everyone for themselves out here." #speaker : ??? #emotion: them_neutral  #layout : right
    
-  theres nothing i can do. its over #speaker : you #textstyle:italic
+theres nothing i can do, its over. #speaker : you #textstyle:italic
    
-  "im sorry." #speaker : you #emotion: man_annoyed #layout : left
+"im sorry." #speaker : you #emotion: man_annoyed #layout : left
    
-  [BANG!]
-  [BANG!]
+[BANG!]
+[BANG!]
    
-  
-  ->prologue4
+->prologue4
   
   =dontopendoor1
   
-   "im not going to open that door." #speaker : you #emotion: man_neutral #layout : left
+"im not going to open that door." #speaker : you #emotion: man_neutral #layout : left
   
-  "what are we going to do then?! you dont even know if they are bad people!" #speaker : her  #emotion: girl_angry #layout : right
+"what are we going to do then?! you dont even know if they are bad people!" #speaker : her  #emotion: girl_angry #layout : right
   
-  "im going to do what i have to" #speaker : you #emotion: man_neutral #layout : left
+"im going to do what i have to." #speaker : you #emotion: man_neutral #layout : left
   
 i pick up the gun lying down on the desk, aiming it at the closed door, ready to fire upon entry. #speaker : you #textstyle:italic
   
- CRASH!
+CRASH!
  
 "stay back! im armed!" #speaker : you #emotion: man_angry  #layout : left
  
-i watch as the man draws a small caliber pistol from his jeans #speaker : you #textstyle:italic
+i watch as the man draws a small caliber pistol from his jeans. #speaker : you #textstyle:italic
 
  
- BANG!
- BANG!
+BANG!
+BANG!
  
-  "what did you do!? you murdered them!?" #speaker : her #emotion: girl_angry #layout : right
+ "what did you do!? you murdered them!?" #speaker : her #emotion: girl_angry #layout : right
  
- "i did what i had to. he was going to kill us." #speaker : you #emotion: man_neutral  #layout : left
+"i did what i had to. he was going to kill us." #speaker : you #emotion: man_neutral  #layout : left
  
- "god damn it." #speaker : her #emotion: girl_sad #layout : right
+"god damn it." #speaker : her #emotion: girl_sad #layout : right
  
- "im going to repair this radio and call for help. let me take care of the bodies. we are going to make it out of here alive." #speaker : you #emotion: man_neutral #layout : left
+"im going to repair this radio and call for help. let me take care of the bodies. we are going to make it out of here alive." #speaker : you #emotion: man_neutral #layout : left
  
 she nods, visibly disturbed by the 2 bodies lying dead on the ground. #speaker : you #textstyle:italic
  
- "im sorry, but there was no other choice." #speaker : you #emotion: man_sad  #layout : left
+"im sorry, but there was no other choice." #speaker : you #emotion: man_sad  #layout : left
 
   ->prologue1
   
@@ -553,11 +571,11 @@ the girl and i squeeze through the vent. outside is a dusk, dilapidated town. #s
 
 CRASH!
 
- "theyre inside" #speaker : you #emotion: man_neutral #layout : left
+"theyre inside" #speaker : you #emotion: man_neutral #layout : left
 
 "where do we go!?" #speaker : her #emotion: girl_annoyed #layout : right
 
-"i dont know. but we have to run. i just dont know where" #speaker : you #emotion: man_neutral #layout : left
+"i dont know. but we have to run. i just dont know where." #speaker : you #emotion: man_neutral #layout : left
 
   ->prologue5
   
@@ -583,21 +601,19 @@ in front of me stands a man, gun in hand pointing at me. but i wont let him kill
 
 [BANG!]
 
-we shot eachother. i feel blood seeping from my skin, looking towards the body laying on the ground in front of me #speaker : you #textstyle:italic
+we shot eachother. i feel blood seeping from my skin, looking towards the body laying on the ground in front of me. #speaker : you #textstyle:italic
    
-"oh god" #speaker : her  #emotion: girl_sad #layout : right
+"oh god." #speaker : her  #emotion: girl_sad #layout : right
 
 i look at the girl as she stares down at me. #speaker : you #textstyle:italic
 
-"NO, YOU CANT DIE!" #speaker : her  #emotion: girl_angry #layout : right
+"NO, YOU CANT DIE!." #speaker : her  #emotion: girl_angry #layout : right
 
-"you need to survive. im done for." #speaker : you   #emotion: man_sad #layout : left
+"you need to survive, im done for." #speaker : you   #emotion: man_sad #layout : left
 
 my eyes fade into darkness, as i hear screams fill the void of silence in the air. #speaker : you #textstyle:italic
  
- 
-
-  ->prologue3
+->prologue3
   
 =dontopendoor4
 
@@ -609,9 +625,9 @@ its over, we having nothing to protect ourselves with #speaker : you #textstyle:
 
 "please, dont do this" #speaker : you  #emotion: man_annoyed #layout : left
 
- "we havent done anything to you, we dont even have anything in here ourselves. please, just let us live." #speaker : her  #emotion: girl_sad #layout : right
+"we havent done anything to you, we dont even have anything in here ourselves. please, just let us live." #speaker : her  #emotion: girl_sad #layout : right
 
- "its us or you, we have to do this." #speaker : ??? emotion: them_ neutral #layout : right
+"its us or you, we have to do this." #speaker : ??? emotion: them_ neutral #layout : right
 
 BANG!
 BANG!
@@ -631,7 +647,7 @@ we made it out alive. our call for help was answered with helping hands, a group
 
 the only thing that matters is that we are alive. who knows what couldve happened to us if we didnt have that gun. #speaker : you #textstyle:italic       
  
- [THE END.] (GOOD ENDING)
+[THE END.] (GOOD ENDING)
  
  -> END 
  
@@ -648,7 +664,7 @@ i only think about what couldve happened if we had something to stop them with. 
 
 [the bunker lingers in silence, 4 bodies laying lifeless on the floor. in the end it came down to nothing.]
 
-[2 people with no resources or anything to survive with. there was no possibility of survival for the remaining 2 girls.] 
+[2 people with no resources or anything to survive with,there was no possibility of survival for the remaining 2 girls.] 
 
 [THE END.] (BAD ENDING 1)
 
@@ -662,7 +678,7 @@ i only think about what couldve happened if we had something to stop them with. 
 ->END
 =prologue5
 
-its been 1 day, there seems to be no life in this town, i dont know how we are going to find our way to help #speaker : you #textstyle:italic
+its been 1 day, there seems to be no life in this town, i dont know how we are going to find our way to help. #speaker : you #textstyle:italic
 
 its just a couple days left until we run out of the water we found at a nearby fountain. this could be the end. #speaker : you #textstyle:italic
 

@@ -100,6 +100,10 @@ public class inkStory : MonoBehaviour
            {
              ContinueStory();
            }
+           else if(fullline == "")
+           {
+             ContinueStory();
+           }
          }
 
           if(fading)
@@ -359,13 +363,22 @@ public class inkStory : MonoBehaviour
             case "closet1" : spriteHolder.sprite = spritelist[5];  break;
             case "vent1" : spriteHolder.sprite = spritelist[6];  break;
             case "bedimage" : spriteHolder.sprite = spritelist[7];  break;
-             case "lightnote" : spriteHolder.sprite = spritelist[8];  break;
-             case "day2" : spriteHolder2.sprite = spritelist[9]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
+            case "lightnote" : spriteHolder.sprite = spritelist[8];  break;
+            case "day2" : spriteHolder2.sprite = spritelist[9]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
             case "day3" : spriteHolder2.sprite = spritelist[10]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
             case "bednote" : spriteHolder.sprite = spritelist[11];  break;
             case "door1" : spriteHolder.sprite = spritelist[12];  break;
-             case "lightshot1" : spriteHolder.sprite = spritelist[13];  break;
-             case "gunshot1" : spriteHolder.sprite = spritelist[14];  break;
+            case "lightshot1" : spriteHolder.sprite = spritelist[13];  break;
+            case "gunshot1" : spriteHolder.sprite = spritelist[14];  break;
+            case "pry" : spriteHolder.sprite = spritelist[15];  break;
+            case "axecabinet" : spriteHolder.sprite = spritelist[16];  break;
+            case "cabinetdoorfloor" : spriteHolder.sprite = spritelist[17];  break;
+            case "ventdestroyed" : spriteHolder.sprite = spritelist[18];  break;
+            case "gunpointed" : spriteHolder.sprite = spritelist[19];  break;
+            case "doorshot2" : spriteHolder.sprite = spritelist[20];  break;
+            case "themnote" : spriteHolder.sprite = spritelist[21];  break;
+            case "keyfloor" : spriteHolder.sprite = spritelist[22];  break;
+            case "revolverpov" : spriteHolder.sprite = spritelist[23];  break;
 
             
         }
