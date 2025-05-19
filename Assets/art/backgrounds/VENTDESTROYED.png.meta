@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      VENTDESTROYED_0: 1413213013124938330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

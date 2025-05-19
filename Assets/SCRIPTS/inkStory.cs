@@ -6,8 +6,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using Random = UnityEngine.Random;
-using UnityEditor.Overlays;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 
@@ -36,7 +35,10 @@ public class inkStory : MonoBehaviour
     
     //audio 
     public AudioSource audioSource;
+    public AudioSource audioSource2;
     public AudioClip textSound;
+    public AudioClip typeWriter;
+    public AudioClip themsounds;
 
     //text
     public TextMeshProUGUI DialogueText;
@@ -67,21 +69,39 @@ public class inkStory : MonoBehaviour
     private const string EMOTION_TAG = "emotion";
     private const string LAYOUT_TAG = "layout";
     private const string IMAGE_TAG = "image";
+    private const string AUDIO_TAG = "audio";
+    private const string END_TAG = "end";
  
 
     //speaker holder
     private string currentspeaker;
     private string fadetiming;
     private string emotion;
+    private string audioMONEY;
+    private string endtag;
 
 
     //coroutine
     private Coroutine typingcoroutine;
 
+    //audio
+    public List<AudioClip> audioClips;
+    public Dictionary<string, AudioClip> audioClipsDict;
+
 
 
     public void Awake()
     {
+        audioClipsDict = new Dictionary<string, AudioClip>();
+
+        foreach (AudioClip clip in audioClips)
+        {
+            if(!audioClipsDict.ContainsKey(clip.name.ToLower()))
+            {
+                audioClipsDict.Add(clip.name.ToString(), clip);
+            }
+        }
+
         buttonholderRT = ButtonHolder.GetComponent<RectTransform>();
         testStory = new Story(JSONAsset.text);
         if(OnCreateStory != null) OnCreateStory(testStory);
@@ -92,17 +112,17 @@ public class inkStory : MonoBehaviour
      {
          if(Input.GetKeyDown(KeyCode.E) && !fading)
          {
-           if (isTyping)
-           {
-            SkipTyping();
-           }
-           else if(!choicecheck)
-           {
-             ContinueStory();
-           }
-           else if(fullline == "")
-           {
-             ContinueStory();
+            if (isTyping)
+            {
+                SkipTyping();
+            }
+            else if (!choicecheck)
+            {
+                ContinueStory();
+            }
+            else if (fullline == "")
+            {
+                ContinueStory();
            }
          }
 
@@ -134,17 +154,20 @@ public class inkStory : MonoBehaviour
            fullline = line;
            Debug.Log("Story is continuing");
 
-           if(typingcoroutine != null)
-           {
-            StopCoroutine(typingcoroutine);
-           }
+            
+
+
+        if (typingcoroutine != null)
+            {
+                StopCoroutine(typingcoroutine);
+            }
 
            
-           typingcoroutine = StartCoroutine(Typing(line));
+        typingcoroutine = StartCoroutine(Typing(line));
 
-           Handletags(testStory.currentTags);
+        Handletags(testStory.currentTags);
 
-           choicecheck = true;
+        choicecheck = true;
         }
         else
         {
@@ -193,6 +216,17 @@ public class inkStory : MonoBehaviour
             break;
             case IMAGE_TAG:
             imagename = tagValue.ToLower();
+            break;
+            case AUDIO_TAG:
+            audioMONEY = tagValue.ToLower();
+            PlayAudioByTag(audioMONEY);
+            break;
+            case END_TAG:
+            endtag = tagValue.ToLower();
+            if (endtag == "true")
+            {
+            SceneManager.LoadScene("end");
+            }
             break;
             default:
             Debug.LogWarning("tag is not possible " + tag);
@@ -289,20 +323,45 @@ public class inkStory : MonoBehaviour
 
        foreach(char c in text)
        {
-         if (currentspeaker == "you" && hasSpeakerTag)
-         {
-            audioSource.pitch = Random.Range(1, 1.3f);
-            audioSource.PlayOneShot(textSound);
-         }
-         else if (currentspeaker == "her" && hasSpeakerTag)
-         {
-            audioSource.pitch = Random.Range(0.5f, 0.8f);
-            audioSource.PlayOneShot(textSound);
-         }
-         else if (!hasSpeakerTag)
-         {
-            audioSource.Stop();
-         }
+            if (!char.IsWhiteSpace(c))
+            {
+                if (currentspeaker == "you" && hasSpeakerTag)
+                {
+                    audioSource.volume = 1f;
+                    audioSource.pitch = Random.Range(1, 1.3f);
+                    audioSource.PlayOneShot(textSound);
+                }
+                else if (currentspeaker == "her" && hasSpeakerTag)
+                {
+                    audioSource.volume = 1f;
+                    audioSource.pitch = Random.Range(0.5f, 0.8f);
+                    audioSource.PlayOneShot(textSound);
+                }
+                else if (currentspeaker == "???" && hasSpeakerTag)
+                {
+                    audioSource.volume = 0.2f;
+                    audioSource.pitch = Random.Range(0.5f, 1f);
+                    audioSource.PlayOneShot(themsounds);
+                }
+                else if (currentspeaker == "narrator" && hasSpeakerTag)
+                {
+                    audioSource.volume = 0.2f;
+                    audioSource.pitch = Random.Range(0.5f, 0.7f);
+                    audioSource.PlayOneShot(typeWriter);
+                }
+                else if (currentspeaker == "")
+                {
+                    audioSource.Stop();
+                }
+                else if (char.IsWhiteSpace(c))
+                {
+                    audioSource.Stop();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
+            }
        
         DialogueText.text += c;
         yield return new WaitForSeconds(0.015f);
@@ -352,33 +411,36 @@ public class inkStory : MonoBehaviour
 
     public void backgroundimage()
     {
-    
-        switch(imagename)
+
+        switch (imagename)
         {
-            case "black" : spriteHolder.sprite = spritelist[0];  break;
-            case "day1" : spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(5f));break;
-            case "background1" : spriteHolder.sprite = spritelist[2];  break;
-            case "radio1" : spriteHolder.sprite = spritelist[3];  break;
-            case "drawer1" : spriteHolder.sprite = spritelist[4];  break;
-            case "closet1" : spriteHolder.sprite = spritelist[5];  break;
-            case "vent1" : spriteHolder.sprite = spritelist[6];  break;
-            case "bedimage" : spriteHolder.sprite = spritelist[7];  break;
-            case "lightnote" : spriteHolder.sprite = spritelist[8];  break;
-            case "day2" : spriteHolder2.sprite = spritelist[9]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
-            case "day3" : spriteHolder2.sprite = spritelist[10]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f));break;
-            case "bednote" : spriteHolder.sprite = spritelist[11];  break;
-            case "door1" : spriteHolder.sprite = spritelist[12];  break;
-            case "lightshot1" : spriteHolder.sprite = spritelist[13];  break;
-            case "gunshot1" : spriteHolder.sprite = spritelist[14];  break;
-            case "pry" : spriteHolder.sprite = spritelist[15];  break;
-            case "axecabinet" : spriteHolder.sprite = spritelist[16];  break;
-            case "cabinetdoorfloor" : spriteHolder.sprite = spritelist[17];  break;
-            case "ventdestroyed" : spriteHolder.sprite = spritelist[18];  break;
-            case "gunpointed" : spriteHolder.sprite = spritelist[19];  break;
-            case "doorshot2" : spriteHolder.sprite = spritelist[20];  break;
-            case "themnote" : spriteHolder.sprite = spritelist[21];  break;
-            case "keyfloor" : spriteHolder.sprite = spritelist[22];  break;
-            case "revolverpov" : spriteHolder.sprite = spritelist[23];  break;
+            case "black": spriteHolder.sprite = spritelist[0]; break;
+            case "day1": spriteHolder2.sprite = spritelist[1]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(5f)); break;
+            case "background1": spriteHolder.sprite = spritelist[2]; break;
+            case "radio1": spriteHolder.sprite = spritelist[3]; break;
+            case "drawer1": spriteHolder.sprite = spritelist[4]; break;
+            case "closet1": spriteHolder.sprite = spritelist[5]; break;
+            case "vent1": spriteHolder.sprite = spritelist[6]; break;
+            case "bedimage": spriteHolder.sprite = spritelist[7]; break;
+            case "lightnote": spriteHolder.sprite = spritelist[8]; break;
+            case "day2": spriteHolder2.sprite = spritelist[9]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f)); break;
+            case "day3": spriteHolder2.sprite = spritelist[10]; fadeinAnimator.Play("fadein"); StartCoroutine(timer(3f)); break;
+            case "bednote": spriteHolder.sprite = spritelist[11]; break;
+            case "door1": spriteHolder.sprite = spritelist[12]; break;
+            case "lightshot1": spriteHolder.sprite = spritelist[13]; break;
+            case "gunshot1": spriteHolder.sprite = spritelist[14]; break;
+            case "pry": spriteHolder.sprite = spritelist[15]; break;
+            case "axecabinet": spriteHolder.sprite = spritelist[16]; break;
+            case "cabinetdoorfloor": spriteHolder.sprite = spritelist[17]; break;
+            case "ventdestroyed": spriteHolder.sprite = spritelist[18]; break;
+            case "gunpointed": spriteHolder.sprite = spritelist[19]; break;
+            case "doorshot2": spriteHolder.sprite = spritelist[20]; break;
+            case "themnote": spriteHolder.sprite = spritelist[21]; break;
+            case "keyfloor": spriteHolder.sprite = spritelist[22]; break;
+            case "revolverpov": spriteHolder.sprite = spritelist[23]; break;
+            case "deskrevolver": spriteHolder.sprite = spritelist[24]; break;
+            case "ventremoved": spriteHolder.sprite = spritelist[25]; break;
+             case "radiorepairs" :spriteHolder.sprite = spritelist[26]; break;
 
             
         }
@@ -391,6 +453,18 @@ public class inkStory : MonoBehaviour
         yield return new WaitForSeconds(fadetime);
         fading = false;
         ContinueStory();
+    }
+
+    public void PlayAudioByTag(string tag)
+    {
+       if(audioClipsDict.TryGetValue(tag, out AudioClip clipToPlay))
+       {
+        audioSource2.PlayOneShot(clipToPlay);
+       } 
+       else
+       {
+        Debug.Log("No Sound for " + tag);
+       }
     }
 
 }

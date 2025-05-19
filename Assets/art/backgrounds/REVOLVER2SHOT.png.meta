@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      REVOLVER2SHOT_0: -1557739319137688605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
